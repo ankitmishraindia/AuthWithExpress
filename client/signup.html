@@ -22,10 +22,65 @@
             <input class="bg-gray-400 text-white px-2 text-lg" type="text" id="bio">
             <label class="text-xl text-start" for="Name">Name:</label>
             <input class="bg-gray-400 text-white px-2 text-lg" type="text" id="name">
-            <button class="text-white bg-blue-700 px-5 py-2 mr-2">REGISTER</button>
-            <button class="text-white bg-blue-700 px-5 py-2">RESET</button>
+            <button type="submit" id="submit" class="text-white bg-blue-700 px-5 py-2 mr-2">REGISTER</button>
+            <button type="reset" id="reset" class="text-white bg-blue-700 px-5 py-2">RESET</button>
          </form>
 
    </div>
+   <!--------------------------javascript code---------------------> -->
+   <script>
+          const username=document.getElementById('username');
+          const email=document.getElementById('email');
+          const password=document.getElementById('password');
+          const bio=document.getElementById('bio');
+          const Name=document.getElementById('name');
+
+          const reset=document.getElementById('reset');
+          reset.addEventListener('click',()=>{
+             username.value="";
+             email.value=""
+             password.value=""
+             bio.value=""
+             Name.value=""
+          })
+          //register button code
+          const submit=document.getElementById('submit')
+          submit.addEventListener('click',(e)=>{
+               e.preventDefault()
+               username=username.value;
+               email=email.value
+               password=password.value
+               bio=bio.value
+               Name=Name.value
+               if(!username && !email && !password && !bio && !Name)
+               {
+                 alert("All fields are required.")
+                 return;
+               }
+               const UserData={
+                username,
+                email,
+                password,
+                bio,
+                name:Name
+               }
+               registerData(UserData)
+          })
+          const registerData=async (payload)=>{
+            try {
+                const res=await fetch("https://mango-fireman-dwpep.pwskills.app:5000/signup",{
+                    method:"POST",
+                    headers:{"Content-type":"application/json"},
+                    body:JSON.stringify(payload)
+                })
+                const data=await res.json()
+                console.log(data)
+                window.location.href="https://mango-fireman-dwpep.pwskills.app:5500/client/login.html"
+            } catch (error) {
+                console.log(error.message)
+            }
+          }
+
+   </script>
 </body>
 </html>
