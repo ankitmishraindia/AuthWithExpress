@@ -1,4 +1,4 @@
-exports.loginValidator=(req,res,next)=>{
+exports.loginDataValidate=(req,res,next)=>{
     const {username,password}=req.body;
     if(req.body&&username&&password)
     {

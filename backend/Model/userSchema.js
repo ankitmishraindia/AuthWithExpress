@@ -1,17 +1,21 @@
 const mongoose=require('mongoose')
 //import bcrypt
 const bcrypt=require('bcrypt')
+//import jsonwebtoken
+const JWT=require('jsonwebtoken')
 //Schema
 const Usermodel=new mongoose.Schema({
     username:{
          type:String,
          required:true,
-         unique:true
+         unique:true,
+         lowercase:true
     },
     email:{
         type:String,
         unique:true,
-        required:true
+        required:true,
+        lowercase:true
     },
     password:{
         type:String,
@@ -28,6 +32,14 @@ const Usermodel=new mongoose.Schema({
     }
 
 })
+//method to generate token
+Usermodel.methods={
+    jwtToken(){
+        return JWT.sign({id:this._id,username:this.username},process.env.SECRET_KEY,{
+            expiresIn:'24h'
+        })
+    }
+}
 //Encrypt(hash) password before saving in the database..
 Usermodel.pre('save',async function(next){
     if(!this.isModified('password'))
@@ -40,4 +52,6 @@ Usermodel.pre('save',async function(next){
         next()
     }
 })
+//jwt signature
+
 module.exports=mongoose.model("User",Usermodel)

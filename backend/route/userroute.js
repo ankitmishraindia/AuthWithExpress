@@ -1,14 +1,14 @@
 const express=require('express')
 //import controller files
-const {signup,login}=require('../Controller/usercontrol')
+const {signup,login, getUserDetails}=require('../Controller/usercontrol')
 //import signup validation
-const {validateSignup}=require('../Middleware/signup.validate')
+const {signupDataValidate}=require('../Middleware/signup.validate')
 //import login validation
-const {loginValidator}=require('../Middleware/login.validator')
+const {loginDataValidate}=require('../Middleware/login.validator')
+//import user authentication
+const {authenticateUser}=require('../Middleware/authenticateuser.validate')
 const router=express.Router()
-router.get('/',(req,res)=>{
-    res.status(200).send("this is testing phase")
-})
-router.post('/signup',validateSignup,signup)
-router.post('/login',loginValidator,login)
+router.get('/',authenticateUser,getUserDetails)
+router.post('/signup',signupDataValidate,signup)
+router.post('/login',loginDataValidate,login)
 module.exports=router;
