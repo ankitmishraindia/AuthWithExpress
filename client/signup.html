@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/dist/output.css">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Main page</title>
 </head>
@@ -23,36 +23,25 @@
             <label class="text-xl text-start" for="Name">Name:</label>
             <input class="bg-gray-400 text-white px-2 text-lg" type="text" id="name">
             <button type="submit" id="submit" class="text-white bg-blue-700 px-5 py-2 mr-2">REGISTER</button>
-            <button type="reset" id="reset" class="text-white bg-blue-700 px-5 py-2">RESET</button>
+            
          </form>
 
    </div>
    <!--------------------------javascript code---------------------> -->
    <script>
-          const username=document.getElementById('username');
-          const email=document.getElementById('email');
-          const password=document.getElementById('password');
-          const bio=document.getElementById('bio');
-          const Name=document.getElementById('name');
+          
 
-          const reset=document.getElementById('reset');
-          reset.addEventListener('click',()=>{
-             username.value="";
-             email.value=""
-             password.value=""
-             bio.value=""
-             Name.value=""
-          })
+          
           //register button code
           const submit=document.getElementById('submit')
           submit.addEventListener('click',(e)=>{
                e.preventDefault()
-               username=username.value;
-               email=email.value
-               password=password.value
-               bio=bio.value
-               Name=Name.value
-               if(!username && !email && !password && !bio && !Name)
+               var username=document.getElementById('username').value;
+               var email=document.getElementById('email').value;
+               var password=document.getElementById('password').value;
+               var bio=document.getElementById('bio').value;
+               var Name=document.getElementById('name').value;
+               if(!username || !email || !password|| !bio || !Name)
                {
                  alert("All fields are required.")
                  return;
@@ -70,7 +59,9 @@
             try {
                 const res=await fetch("https://mango-fireman-dwpep.pwskills.app:5000/signup",{
                     method:"POST",
-                    headers:{"Content-type":"application/json"},
+                    headers:{"Content-type":"application/json",
+                             "Access-Control-Allow-Origin":"*"
+                            },
                     body:JSON.stringify(payload)
                 })
                 const data=await res.json()
