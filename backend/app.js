@@ -8,10 +8,11 @@ const ConnectToDb=require('./Config/db')
 ConnectToDb()
 const app=express()
 //middleware
-app.use(express.json())
-app.use(cookieparser())
 app.use(cors({
     origin:process.env.CLIENT_URL
 }))
+app.use(express.json())
+app.use(cookieparser())
+
 app.use('/',userroute)
 module.exports=app;
