@@ -12,15 +12,50 @@
     <div class="bg-blue-50 rounded-md p-9 text-center w-fit">
         <h2 class="text-3xl mb-8">Instagram Login Page</h2>
          <form action="" class="grid grid-cols-2 gap-y-5">
-            <label class="text-xl text-start" for="email">Email:</label>
-            <input class="bg-gray-400 text-white text-base w-56 px-2" type="email" id="email">
+            <label class="text-xl text-start" for="email">Username:</label>
+            <input class="bg-gray-400 text-white text-base w-56 px-2" type="text" id="username">
             <label class="text-xl text-start" for="password">Password:</label>
             <input class="bg-gray-400 text-white text-base w-56 px-2" type="password" id="password">
             
-            <button class="text-white bg-blue-700 px-5 py-2 mr-2">Login</button>
+            <button id="login" class="text-white bg-blue-700 px-5 py-2 mr-2">Login</button>
             <button class="text-white bg-blue-700 px-5 py-2">RESET</button>
          </form>
 
    </div>
+   <script>
+         const login=document.getElementById('login')
+         login.addEventListener('click',(e)=>{
+           e.preventDefault()
+           const username=document.getElementById('username').value
+           const password=document.getElementById('password').value;
+           if(!username||!password)
+           {
+            return "username and password are required"
+           }
+           const userdata={
+            username,password
+           }
+           loginuser(userdata)
+         })
+         const loginuser=async (payload)=>{
+            try {
+                const resp=await fetch('http://127.0.0.1:6000/login',{
+                    method:'POST',
+                    credentials:'include',
+                    redirect:"follow",
+                    headers:{'content-type':'application/json',
+                            'Access-Control-Allow-Origin':'*'},
+                    body:JSON.stringify(payload)
+                })
+                const data=await resp.json()
+                console.log(data)
+                window.location.href="https://localhost:5501/client/index.html"
+
+
+            } catch (error) {
+                console.log(error.message)
+            }
+         }
+   </script>
 </body>
 </html>

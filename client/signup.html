@@ -30,8 +30,6 @@
    <!--------------------------javascript code---------------------> -->
    <script>
           
-
-          
           //register button code
           const submit=document.getElementById('submit')
           submit.addEventListener('click',(e)=>{
@@ -57,7 +55,7 @@
           })
           const registerData=async (payload)=>{
             try {
-                const res=await fetch("https://mango-fireman-dwpep.pwskills.app:5000/signup",{
+                const res=await fetch("http://localhost:6000/signup",{
                     method:"POST",
                     headers:{"Content-type":"application/json",
                              "Access-Control-Allow-Origin":"*"
@@ -66,12 +64,12 @@
                 })
                 const data=await res.json()
                 console.log(data)
-                window.location.href="https://mango-fireman-dwpep.pwskills.app:5500/client/login.html"
+               // window.location.href="https://mango-fireman-dwpep.pwskills.app:5501/client/login.html"
             } catch (error) {
                 console.log(error.message)
             }
           }
-
+          
    </script>
 </body>
 </html>

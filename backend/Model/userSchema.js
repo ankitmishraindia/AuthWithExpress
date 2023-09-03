@@ -36,7 +36,7 @@ const Usermodel=new mongoose.Schema({
 Usermodel.methods={
     jwtToken(){
         return JWT.sign({id:this._id,username:this.username},process.env.SECRET_KEY,{
-            expiresIn:'24h'
+            expiresIn:'24d'
         })
     }
 }

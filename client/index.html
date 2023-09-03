@@ -13,23 +13,45 @@
         <div class="flex items-center justify-center gap-4">
             <img class="w-[100px] h-[150px] rounded-[50px] mb-4" src="https://cdn.hashnode.com/res/hashnode/image/upload/v1678346945222/rqF9VKynq.jpg?w=500&h=500&fit=crop&crop=faces&auto=compress,format&format=webp" alt="profile">
             <div>
-                <p class="text-xl text-blue-600">Name</p>
-                <p class="text-xl text-blue-600">Username</p>
-                <p class="text-xl text-blue-600">Email</p>
-                <p class="text-xl text-blue-600">Follwers:20k</p>
+                <p id="name" class="text-xl text-blue-600">Name</p>
+                <p id="bio" class="text-xl text-blue-600">Bio:</p>
+                <p id="email" class="text-xl text-blue-600">Email</p>
+                <p  class="text-xl text-blue-600">Follwers:20k</p>
             </div>
         </div>
         <hr>
         
         <p class="text-justify mb-2 px-4">This is a authentication test application for login and signup. If you are a registered user then click Login otherwise click on SignUp.</p>
-        <div>
+        <!-- <div>
             <button class="bg-blue-700 text-white px-7 py-3 mr-3">SignUp</button>
             <button class="bg-blue-700 text-white px-7 py-3">LogIn</button>
-        </div>
+        </div> -->
     </div>
-    <!-- ------------------javascript code--------------- -->
+    <!-- ------------------javascript code----------------->
     <script>
-           
+           const findUser=async ()=>{
+            try {
+                const resp=await fetch('http://localhost:6000/',{
+                    method:'GET',
+                    credentials:'include'
+                })
+                if(resp.status!==200)
+                {
+                    window.location.href="https://mango-fireman-dwpep.pwskills.app:5501/client/login.html"
+                }
+                const {data}=await resp.json()
+                const name=document.getElementById('name');
+                const email=document.getElementById('email')
+                const bio=document.getElementById('bio')
+                name.innerText=data.name
+                email.innerText=data.email
+                bio.innerText=data.bio
+            } catch (error) {
+                console.log(error.message)
+                //window.location.href="https://mango-fireman-dwpep.pwskills.app:5501/client/login.html"
+            }
+           }
+           findUser()
     </script>
 </body>
 </html>

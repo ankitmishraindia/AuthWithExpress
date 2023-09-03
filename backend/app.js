@@ -9,7 +9,7 @@ ConnectToDb()
 const app=express()
 //middleware
 app.use(cors({
-    origin:process.env.CLIENT_URL
+    origin:true
 }))
 app.use(express.json())
 app.use(cookieparser())

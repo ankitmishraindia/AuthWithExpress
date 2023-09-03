@@ -2,13 +2,15 @@ const JWT=require('jsonwebtoken')
 exports.authenticateUser= async (req,res,next)=>{
     try {
         const token=await (req.cookies && req.cookies.token) || null;
-    if(!token)
+    if(!req.cookies)
     {
-        return res.status(500).json({
-            msg:"User authentication failed",
-            token:req.cookies
-        })
+        throw new Error("req.cookies is not present")
+        }
+    if(!req.cookies.token)
+    {
+        throw new Error("req.cookies.token is not present")
     }
+    
     const payload=await JWT.verify(token,process.env.SECRET_KEY)
     req.user={id:payload.id,username:payload.username}
     next()
