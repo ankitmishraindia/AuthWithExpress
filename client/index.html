@@ -31,13 +31,13 @@
     <script>
            const findUser=async ()=>{
             try {
-                const resp=await fetch('http://localhost:6000/',{
+                const resp=await fetch('http://localhost:4500',{
                     method:'GET',
                     credentials:'include'
                 })
                 if(resp.status!==200)
                 {
-                    window.location.href="https://mango-fireman-dwpep.pwskills.app:5501/client/login.html"
+                    window.location.href="https://localhost:5500/client/login.html"
                 }
                 const {data}=await resp.json()
                 const name=document.getElementById('name');
@@ -48,7 +48,7 @@
                 bio.innerText=data.bio
             } catch (error) {
                 console.log(error.message)
-                //window.location.href="https://mango-fireman-dwpep.pwskills.app:5501/client/login.html"
+                window.location.href="https://localhost:5500/client/login.html"
             }
            }
            findUser()

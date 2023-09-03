@@ -28,7 +28,7 @@
 
    </div>
    <!--------------------------javascript code---------------------> -->
-   <script>
+   <!-- <script>
           
           //register button code
           const submit=document.getElementById('submit')
@@ -55,7 +55,7 @@
           })
           const registerData=async (payload)=>{
             try {
-                const res=await fetch("http://localhost:6000/signup",{
+                const res=await fetch("http://127.0.0.1:4500/signup",{
                     method:"POST",
                     headers:{"Content-type":"application/json",
                              "Access-Control-Allow-Origin":"*"
@@ -64,12 +64,12 @@
                 })
                 const data=await res.json()
                 console.log(data)
-               // window.location.href="https://mango-fireman-dwpep.pwskills.app:5501/client/login.html"
+                window.location.href="https://localhost/client/login.html"
             } catch (error) {
                 console.log(error.message)
             }
           }
           
-   </script>
+   </script> -->
 </body>
 </html>

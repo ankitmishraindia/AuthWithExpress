@@ -39,17 +39,16 @@
          })
          const loginuser=async (payload)=>{
             try {
-                const resp=await fetch('http://127.0.0.1:6000/login',{
+                const resp=await fetch('http://127.0.0.1:4500/login',{
                     method:'POST',
-                    credentials:'include',
+                    //credentials:'include',
                     redirect:"follow",
-                    headers:{'content-type':'application/json',
-                            'Access-Control-Allow-Origin':'*'},
+                    headers:{'content-type':'application/json'},
                     body:JSON.stringify(payload)
                 })
                 const data=await resp.json()
                 console.log(data)
-                window.location.href="https://localhost:5501/client/index.html"
+                window.location.href="https://localhost:5500/client/index.html"
 
 
             } catch (error) {
