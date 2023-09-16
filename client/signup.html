@@ -27,8 +27,8 @@
          </form>
 
    </div>
-   <!--------------------------javascript code---------------------> -->
-   <!-- <script>
+   <!--------------------------javascript code--------------------->
+   <script>
           
           //register button code
           const submit=document.getElementById('submit')
@@ -55,21 +55,20 @@
           })
           const registerData=async (payload)=>{
             try {
-                const res=await fetch("http://127.0.0.1:4500/signup",{
+                const res=await fetch("http://localhost:8000/signup",{
                     method:"POST",
-                    headers:{"Content-type":"application/json",
-                             "Access-Control-Allow-Origin":"*"
+                    headers:{"Content-type":"application/json"
                             },
                     body:JSON.stringify(payload)
                 })
                 const data=await res.json()
                 console.log(data)
-                window.location.href="https://localhost/client/login.html"
+                window.location.href="http://localhost:5500/client/login.html"
             } catch (error) {
                 console.log(error.message)
             }
           }
           
-   </script> -->
+   </script>
 </body>
 </html>

@@ -31,13 +31,13 @@
     <script>
            const findUser=async ()=>{
             try {
-                const resp=await fetch('http://localhost:4500',{
-                    method:'GET',
-                    credentials:'include'
+                const resp=await fetch('http://localhost:8000',{
+                    method:'GET'
+                    //credentials:'include'
                 })
                 if(resp.status!==200)
                 {
-                    window.location.href="https://localhost:5500/client/login.html"
+                   //window.location.href="http://localhost:5500/client/login.html"
                 }
                 const {data}=await resp.json()
                 const name=document.getElementById('name');
@@ -48,7 +48,7 @@
                 bio.innerText=data.bio
             } catch (error) {
                 console.log(error.message)
-                window.location.href="https://localhost:5500/client/login.html"
+                // window.location.href="http://localhost:5500/client/login.html"
             }
            }
            findUser()

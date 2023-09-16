@@ -25,25 +25,32 @@ exports.login=async (req,res)=>{
     try {
         const {username,password}=req.body;
         const user=await User.findOne({username}).select("+password")
-        if(!user&&!user.password)
+        if(user&&user.password)
         {
-            throw new Error("User does not exist")
-        }
-        const result=await bcrypt.compare(password,user.password)
-        if(!result)
-        {
-            throw new Error("password does not match")
-        }
-        const token=await user.jwtToken()
-        const cookieOptions={
-            maxAge:24*60*60*1000, //24hr
-            httpOnly:true
-        }
-        res.cookie("token",token,cookieOptions)
-        res.status(200).json({
+           const result=await bcrypt.compare(password,user.password)
+           if(result)
+           {
+             const token=await user.jwtToken()
+             const cookieOptions={
+             maxAge:24*60*60*1000, //24hr
+             httpOnly:true
+             }
+            res.cookie("token",token,cookieOptions)
+            res.status(200).json({
             Success:true,
             data:user
-        })
+            })
+           }
+           else
+           {
+            res.status(404).send("Password is incorrect")
+           }
+        }
+        else{
+         res.status(404).send("No user found with this username..please register first")
+        }
+        
+       
     } catch (error) {
         console.log(error.message)
         res.status(500).json({
@@ -57,7 +64,7 @@ exports.getUserDetails=async (req,res)=>{
           const userid=req.user.id
           const users=await User.findById(userid)
           res.status(200).json({
-            Success:true,
+            Success:"Requested user is successfully retrieved",
             data:users
           })
     } catch (error) {
