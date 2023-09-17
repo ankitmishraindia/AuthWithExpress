@@ -1,4 +1,4 @@
-require('dotenv').config()
+
 const express=require('express')
 const userroute=require('./route/userroute')
 const cookieparser=require('cookie-parser')
@@ -9,6 +9,7 @@ ConnectToDb()
 const app=express()
 //middleware
 app.use(cors({
+    origin:true,
     credentials:true
 }))
 app.use(express.json())
