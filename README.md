@@ -1,15 +1,15 @@
 
 # AUTHENTICATION WITH EXPRESS CONNECTED VIA MONGODB ATLAS
     It is a full stack web application (backend and frontend), which is using JWT Authentication to make login user and finding details of the loggedin user via JWT Token. It is  made with following:
-    - Frontend
-     - HTML
-     - CSS
-     - JAVASCRIPT
-    - BACKEND
-     - NODEJS
-     - EXPRESS
-    - Database
-     - MONGODB ATLAS
+- Frontend
+  - HTML
+  - CSS
+  - JAVASCRIPT
+- BACKEND
+  - NODEJS
+  - EXPRESS
+- Database
+  - MONGODB ATLAS
 ## Purpose of this project
 - This application program can be used for making a simple user-management between frontend and backend with:
  - Registeration
