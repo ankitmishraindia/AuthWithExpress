@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 //import bcrypt
-const bcrypt=require('bcrypt')
+const bcrypt=require('bcryptjs')
 //import jsonwebtoken
 const JWT=require('jsonwebtoken')
 //Schema

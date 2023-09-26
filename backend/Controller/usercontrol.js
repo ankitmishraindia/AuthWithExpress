@@ -1,6 +1,6 @@
 
 const User=require('../Model/userSchema.js')
-const bcrypt=require('bcrypt')
+const bcrypt=require('bcryptjs')
 const JWT=require('jsonwebtoken')
 
 exports.signup=async (req,res)=>{
@@ -63,6 +63,7 @@ exports.getUserDetails=async (req,res)=>{
     try {
           const userid=req.user.id
           const users=await User.findById(userid)
+          
           res.status(200).json({
             Success:"Requested user is successfully retrieved",
             data:users
