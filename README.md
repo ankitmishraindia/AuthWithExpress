@@ -13,20 +13,19 @@
 ## Purpose of this project
 - This application program can be used for making a simple user-management between frontend and backend with:
  - Registeration
-   :A user is registering in the database by the endpoint **/signup** . You have to given these datas from frontend.
+   :An user is registering in the database by the endpoint **/signup** . You have to given these datas from frontend.
    - USERNAME
    - EMAIL
    - PASSWORD
    - BIO
    - NAME
  - Login
-    :A user is logging in the database by the endpoint **/login**. You have to given these information from the frontend.
+    :An user is logging in the database by the endpoint **/login**. You have to given these information from the frontend.
     - EMAIL
     - PASSWORD
- - Login
-    :A user can be logged in by endpoint **/login**. You have to given these information from the frontend.
-    - EMAIL
-    - PASSWORD
+ - Get User Details
+    :An user details can be obtained by endpoint **/**. You have to need JWT Token which is obtained through login process.
+     You have nothing to fill for get user details.
 
 ## Feauters
  ### Request/Response Formats
