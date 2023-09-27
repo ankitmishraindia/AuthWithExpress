@@ -22,22 +22,19 @@
         <hr>
         
         <p class="text-justify mb-2 px-4">This is a authentication test application for login and signup. If you are a registered user then click Login otherwise click on SignUp.</p>
-        <!-- <div>
-            <button class="bg-blue-700 text-white px-7 py-3 mr-3">SignUp</button>
-            <button class="bg-blue-700 text-white px-7 py-3">LogIn</button>
-        </div> -->
+        
     </div>
     <!-- ------------------javascript code----------------->
     <script>
            const findUser=async ()=>{
             try {
-                const resp=await fetch('http://localhost:8000',{
+                const resp=await fetch('http://127.0.0.1:8000',{
                     method:'GET',
                     credentials:'include' 
                 })
                 if(resp.status!==200)
                 {
-                   //window.location.href="http://localhost:5500/client/login.html"
+                   window.location.href="http://127.0.0.1:5500/client/login.html"
                 }
                 const data=await resp.json()
                 const name=document.getElementById('name');
@@ -48,7 +45,7 @@
                 bio.innerText=data.bio
             } catch (error) {
                 console.log(error.message)
-                // window.location.href="http://localhost:5500/client/login.html"
+                window.location.href="http://127.0.0.1:5500/client/login.html"
             }
            }
            findUser()
