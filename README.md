@@ -19,13 +19,15 @@
    - PASSWORD
    - BIO
    - NAME
-     ![image](https://github.com/ankitmishraindia/AuthWithExpress/assets/122813547/218c28f7-4947-4b68-9c41-6cc025793942)
+
+      ![image](https://github.com/ankitmishraindia/AuthWithExpress/assets/122813547/218c28f7-4947-4b68-9c41-6cc025793942)
 
  - Login
     :An user is logging in the database by the endpoint **/login**. You have to given these information from the frontend.
     - EMAIL
     - PASSWORD
-      ![image](https://github.com/ankitmishraindia/AuthWithExpress/assets/122813547/7b1df0d4-509e-47fa-a121-526c9b8be484)
+
+       ![image](https://github.com/ankitmishraindia/AuthWithExpress/assets/122813547/7b1df0d4-509e-47fa-a121-526c9b8be484)
 
  - Get User Details
     :An user details can be obtained by endpoint **/**. You have to need JWT Token which is obtained through login process.
